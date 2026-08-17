@@ -22,8 +22,15 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
+    - name: Run Tests
+      run: npm test -- --watchAll=false
+      env:
+        CI: true
+
     - name: Build React App
       run: npm run build
+      env:
+        CI: false
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
